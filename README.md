@@ -15,30 +15,9 @@ The normalized dataset contains a x, y location coordinates divided by the used 
 
 
 
-### Data directory structure
+### Data Construction
 ```
-Ref_Seq_
-|
---- Warehouse_0                              # Environment folder
-|       |
-|       ---- Seq_0                           # Sequece
-|       |      |
-|       |      +--- rgb                      # 0.png - xxxx.png      
-|       |      +--- depth                    # 0.png - xxxx.png
-|       |      +--- semantic_segmentation    # 0.png - xxxx.png     
-|       |      ---- raw                   
-|       |      |     |
-|       |      |     +--- rgb                # 0.png - xxxx.png
-|       |      |     +--- depth              # 0.png - xxxx.png
-|       |      |     ---- poses.g2o 
-|       |      |     ---- rtabmap.yaml
-|       |
-|       +--- Seq_1
-|
-+-- Warehouse_1
-.
-.
-+-- Warehouse_N
+
 
 
 
