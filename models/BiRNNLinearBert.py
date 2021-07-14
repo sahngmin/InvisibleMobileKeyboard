@@ -25,8 +25,7 @@ class RNNLinearBERT(nn.Module):
         nhid = 512
         nlayer = 6
         if gru_stack_bert:
-            self.init_rnn = BidirectionalRNN(char_embed_size=128, nhid=nhid, nlayer=nlayer, vocab_size=len(chars), rnn_type="GRU",
-                     semantic_decoding=semantic_decoding, statistic_decoding=statistical_decoding)
+            self.init_rnn = BidirectionalRNN(char_embed_size=128, nhid=nhid, nlayer=nlayer, vocab_size=len(chars), rnn_type="GRU")
             self.bigru = load_model(self.init_rnn, args.geometric_decoder_path)
         self.linear = nn.Linear(nhid*2, self.bert_config.hidden_size)
 

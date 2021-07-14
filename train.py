@@ -20,17 +20,15 @@ if __name__ == "__main__":
 
     if args.bigru:
         if args.bert:
-            predictor = BiRNNLinearBert.RNNLinearBERT(semantic_decoding=False, statistical_decoding=True,
-                                            gru_stack_bert=args.gru_stack_bert, args=args).to(device)
+            predictor = BiRNNLinearBert.RNNLinearBERT(gru_stack_bert=args.gru_stack_bert, args=args).to(device)
         else:
             predictor = BiRNN.BidirectionalRNN(char_embed_size=args.char_embed_size, nhid=args.nhid, nlayer=args.nlayers,
-                                               semantic_decoding=args.semantic_decoding, rnn_type='GRU').to(device)
+                                               rnn_type='GRU').to(device)
             model_name = 'BiRNN'
 
     elif args.bert:
         if args.masked_LM:
             args.train_data = './data/Masked_CLM/1BW_LM.csv'
-            # args.train_data = './data/1BW_english.txt'
             args.val_data = './data/data_train.csv'
             model_name = 'BERT'
         else:

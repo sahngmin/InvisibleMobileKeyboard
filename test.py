@@ -118,8 +118,7 @@ if __name__ == "__main__":
                                 various=args.various_length, full_sentence=args.full_sentence)
 
 
-    predictor = BiRNN.BidirectionalRNN(char_embed_size=args.char_embed_size, nhid=256, nlayer=6,
-                                           semantic_decoding=args.semantic_decoding, rnn_type='GRU').to(device)
+    predictor = BiRNN.BidirectionalRNN(char_embed_size=args.char_embed_size, nhid=256, nlayer=6, rnn_type='GRU').to(device)
 
     save_path = './checkpoints/BiRNN256_6_5.pth'
 

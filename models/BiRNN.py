@@ -17,21 +17,15 @@ class BidirectionalRNN(nn.Module):
     Decoder receives the raw inputs from users,
     and transforms the inputs to sequences of characters.
     """
-    def __init__(self, char_embed_size=16, nhid=128, nlayer=2, vocab_size=len(chars), rnn_type="GRU",
-                 semantic_decoding=False, statistic_decoding=True, layer_norm=False):
+    def __init__(self, char_embed_size=16, nhid=128, nlayer=2, vocab_size=len(chars), rnn_type="GRU", layer_norm=False):
         super(BidirectionalRNN, self).__init__()
-        self.semantic_decoding = semantic_decoding
         self.normalize = layer_norm
         if layer_norm:
             self.dense = nn.Linear(4, 4, bias=False)
             self.layerNorm = nn.LayerNorm(4)
         self.char_embed = nn.Embedding(vocab_size, char_embed_size)
-        if statistic_decoding:
-            input_size = 4  # [x, y, w, h]
-            # self.bn1 = nn.BatchNorm1d(num_features=4)
-        else:   # if semantic_decoding:
-            input_size = char_embed_size + 4    # [x, y, w, h + embedding size]
-            # self.bn1 = nn.BatchNorm1d(num_features=4+char_embed_size)
+        input_size = char_embed_size + 4    # [x, y, w, h + embedding size]
+        # self.bn1 = nn.BatchNorm1d(num_features=4+char_embed_size)
         if rnn_type in ["GRU", "LSTM"]:
             self.rnn = getattr(nn, rnn_type)(
                 input_size=input_size,
@@ -49,22 +43,14 @@ class BidirectionalRNN(nn.Module):
         # self.bn1d = nn.BatchNorm1d(4)
 
     def forward(self, x_batch, input_len, bert_stack=False):
-        if self.semantic_decoding:
-            x_index = x_batch[:, :, 0]      # (16, 9)
-            x_batch = x_batch[:, :, 1:]
-            char_embedding = self.char_embed(x_index.long())    # (16, 9, 16) -> (bs, seq_len, emb_size)
-            x_batch = torch.cat((x_batch.double(), char_embedding.double()), dim=2)   # (16, 9, 20) -> (bs, seq_len, emb_size+(x,y,w,h))
-            # x_batch_flat = x_batch.view(-1, x_batch.shape[2])
-            # x_batch_flat_np = x_batch_flat.numpy()
-            x_packed = pack_padded_sequence(x_batch, input_len, batch_first=True, enforce_sorted=False)
+
+        # x_batch_flat = x_batch[:, :, 1:].view(-1, 4)
+        # x_bn = self.bn1(x_batch_flat)
+        if self.normalize:
+            rnn_input = self.layerNorm(self.dense(x_batch[:, :, 1:].float()))
         else:
-            # x_batch_flat = x_batch[:, :, 1:].view(-1, 4)
-            # x_bn = self.bn1(x_batch_flat)
-            if self.normalize:
-                rnn_input = self.layerNorm(self.dense(x_batch[:, :, 1:].float()))
-            else:
-                rnn_input = x_batch[:, :, 1:]
-            x_packed = pack_padded_sequence(rnn_input, input_len, batch_first=True, enforce_sorted=False)
+            rnn_input = x_batch[:, :, 1:]
+        x_packed = pack_padded_sequence(rnn_input, input_len, batch_first=True, enforce_sorted=False)
         x = x_packed.float()
 
         out, _ = self.rnn(x)

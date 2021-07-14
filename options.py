@@ -71,10 +71,6 @@ class TrainOptions(BaseOptions):
         self.parser.add_argument('--freq1000_data', default='./data/data_normalized/data_freq1000.csv')
 
         # Options of Input
-        self.parser.add_argument('--statistic_decoding', default=True, help="prediction only based on x, y location")
-        self.parser.add_argument('--semantic_decoding', default=False,
-                                 help="prediction using Language Model, input has character index")
-
         self.parser.add_argument('--various_length', default=True,
                                  help="whether input phrase has various or fixed length")
         self.parser.add_argument('--full_sentence', default=False,
