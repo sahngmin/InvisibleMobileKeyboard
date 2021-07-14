@@ -41,7 +41,7 @@ def test_(args, predictor, best_model, dataloader_test, load_path=None, print_co
             step += 1
             x_batch = x_batch.to(device)
             y_batch = y_batch.to(device)
-            if args.TMIkeyboard:
+            if args.sa_ncd:
                 output_stat, output, all_hidden_states = predictor(x_batch, input_len)
             elif args.bert:
                 output, prev_outputs = predictor(x_batch, input_len, masked_LM=args.masked_LM)

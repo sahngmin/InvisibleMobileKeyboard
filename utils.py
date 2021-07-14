@@ -98,7 +98,7 @@ def evaluate(dataloader, predictor, criterion, args, state='val', pretrained=Non
             step += 1
             x_batch = x_batch.to(device)
             y_batch = y_batch.to(device)
-            if args.TMIkeyboard:
+            if args.sa_ncd:
                 output_stat, output, all_hidden_states = predictor(x_batch, input_len)
             else:
                 output = predictor(x_batch, input_len)

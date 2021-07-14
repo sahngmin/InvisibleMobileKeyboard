@@ -6,7 +6,7 @@ import data
 import utils
 from test import test_
 from torch.nn import DataParallel
-from models import BiRNN, IKeyboard, TMIKeyboard, ShortTermMLP, BERT, BiRNNLinearBert
+from models import BiRNN, IKeyboard, SANCD, ShortTermMLP, BERT, BiRNNLinearBert
 
 
 if __name__ == "__main__":
@@ -42,9 +42,9 @@ if __name__ == "__main__":
         predictor = IKeyboard.Ikeyboard(args=args)
         model_name = 'IKeyboard'
 
-    elif args.TMIkeyboard:
-        predictor = TMIKeyboard.TMIKeyboard(args=args).to(device)
-        model_name = 'TMIKeyboard'
+    elif args.sa_ncd:
+        predictor = SANCD.SANCD(args=args).to(device)
+        model_name = 'SANCD'
 
     else:
         predictor = ShortTermMLP.ShortTermDecoder().to(device)

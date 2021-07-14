@@ -93,13 +93,13 @@ class TrainOptions(BaseOptions):
         # Model Selection
         self.parser.add_argument('--short_term_predict', default=False, help="short prediction for three characters")
 
-        self.parser.add_argument('--bigru', default=False, help="use Bi-directional GRU as a decoding model")
-        self.parser.add_argument('--bert', default=False, help="use Bert as a decoding model")
-        self.parser.add_argument('--masked_LM', default=False)
-        self.parser.add_argument('--ikeyboard', default=False, help="use ikeyboard")
-        self.parser.add_argument('--gru_stack_bert', default=False, help="use Bert as a decoding model")
-        self.parser.add_argument('--custom_input', default=False, help="use 4 dimension statistic input from our data")
-        self.parser.add_argument('--TMIkeyboard', default=True, help="use TMIkeyboard")
+        self.parser.add_argument('--bigru', default=False, action='store_true', help="use Bi-directional GRU as a decoding model")
+        self.parser.add_argument('--bert', default=False, action='store_true', help="use Bert as a decoding model")
+        self.parser.add_argument('--masked_LM', default=False, action='store_true')
+        self.parser.add_argument('--ikeyboard', default=False, action='store_true', help="use ikeyboard")
+        self.parser.add_argument('--gru_stack_bert', default=False, action='store_true', help="use Bert as a decoding model")
+        self.parser.add_argument('--custom_input', default=False, action='store_true', help="use 4 dimension statistic input from our data")
+        self.parser.add_argument('--sa_ncd', default=False, action='store_true', help="use TMIkeyboard")
 
 
         # options for ShortTermDecoder

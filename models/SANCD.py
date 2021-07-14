@@ -17,9 +17,9 @@ from .BERT import BERT
 from torch.nn import DataParallel
 
 
-class TMIKeyboard(nn.Module):
+class SANCD(nn.Module):
     def __init__(self, args=None):
-        super(TMIKeyboard, self).__init__()
+        super(SANCD, self).__init__()
         self.softmax = nn.Softmax(dim=1)
         self.load_gru = args.load_gru
         self.intermediate = args.intermediate_loss
