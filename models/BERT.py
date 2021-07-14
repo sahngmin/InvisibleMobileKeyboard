@@ -55,7 +55,6 @@ def train_(predictor, dataloader_train, criterion, args, device, dataloader_val,
         predictor = DataParallel(predictor)
 
     for epoch in range(args.epoch):
-        epoch_start_time = time.time()
         epoch_loss = 0
         intermediate_loss = 0
         step = 0
@@ -116,4 +115,9 @@ def train_(predictor, dataloader_train, criterion, args, device, dataloader_val,
                 best_model = copy.deepcopy(predictor.state_dict())
             count = 0
 
+    if args.save:
+        print("=> saving checkpoints '{}'".format(save_path.replace('.pth', str(epoch + 1) + '.pth')))
+        save_model(best_model, save_path.replace('.pth', '_epoch' + str(epoch + 1) + '.pth'))
+
     return best_model
+

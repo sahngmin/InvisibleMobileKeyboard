@@ -24,18 +24,18 @@ class TMIKeyboard(nn.Module):
         self.load_gru = args.load_gru
         self.intermediate = args.intermediate_loss
         self.args = args
-        nhid = 256
-        nlayer = 6
-        self.bigru = BidirectionalRNN(char_embed_size=128, nhid=nhid, nlayer=nlayer, vocab_size=len(chars), rnn_type="GRU",
+        # nhid = 256
+        # nlayer = 6
+        self.bigru = BidirectionalRNN(char_embed_size=128, nhid=args.nhid, nlayer=args.nlayers, vocab_size=len(chars), rnn_type="GRU",
                                          semantic_decoding=False, statistic_decoding=True)
         if args.load_gru:
-            self.bigru = load_model(self.bigru, args.gru_path)
+            self.bigru = load_model(self.bigru, args.geometric_decoder_path)
 
         self.bert_config = BertConfig(args=args)
         self.bert = BERT(args=args)
-        self.threshold = args.threshold
+        self.threshold = args.cm_threshold
         if args.load_bert:
-            self.bert = load_model(self.bert, args.bert_path)
+            self.bert = load_model(self.bert, args.semantic_decoder_path)
 
     def forward(self, x_batch, input_len):
         output_statistic = self.bigru(x_batch, input_len)
@@ -43,6 +43,7 @@ class TMIKeyboard(nn.Module):
         val_k, top_k = torch.topk(nn.functional.softmax(output_statistic, dim=1), 3, dim=1)
         top1_predicted = top_k[:, 0, :]
         top1_value = val_k[:, 0, :]
+        # conifidence masking
         filtered_input = top1_predicted * (top1_value > self.threshold)
         filtered_input[filtered_input == 0] = 1
         bert_input = filtered_input

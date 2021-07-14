@@ -61,14 +61,14 @@ class TrainOptions(BaseOptions):
 
         self.parser.add_argument('--step_lr', default=10, type=int)
         self.parser.add_argument('--case', default=0, help='for ablation case study')
-        self.parser.add_argument('--early_stop', default=5)
+        self.parser.add_argument('--early_stop', default=10)
 
         # Dataset
-        self.parser.add_argument('--train_data', default='./data/TMI_Data/data_train.csv')
-        self.parser.add_argument('--val_data', default='./data/TMI_Data/data_val.csv')
-        self.parser.add_argument('--test_data', default='./data/TMI_Data/data_test.csv')
-        self.parser.add_argument('--mckenzie_data', default='./data/TMI_Data/data_mckenzie.csv')
-        self.parser.add_argument('--freq1000_data', default='./data/TMI_Data/data_freq1000.csv')
+        self.parser.add_argument('--train_data', default='./data/data_normalized/data_train.csv')
+        self.parser.add_argument('--val_data', default='./data/data_normalized/data_val.csv')
+        self.parser.add_argument('--test_data', default='./data/data_normalized/data_test.csv')
+        self.parser.add_argument('--mckenzie_data', default='./data/data_normalized/data_mckenzie.csv')
+        self.parser.add_argument('--freq1000_data', default='./data/data_normalized/data_freq1000.csv')
 
         # Options of Input
         self.parser.add_argument('--statistic_decoding', default=True, help="prediction only based on x, y location")
@@ -93,13 +93,13 @@ class TrainOptions(BaseOptions):
         # Model Selection
         self.parser.add_argument('--short_term_predict', default=False, help="short prediction for three characters")
 
-        self.parser.add_argument('--bigru', default=True, help="use Bi-directional GRU as a decoding model")
+        self.parser.add_argument('--bigru', default=False, help="use Bi-directional GRU as a decoding model")
         self.parser.add_argument('--bert', default=False, help="use Bert as a decoding model")
         self.parser.add_argument('--masked_LM', default=False)
         self.parser.add_argument('--ikeyboard', default=False, help="use ikeyboard")
         self.parser.add_argument('--gru_stack_bert', default=False, help="use Bert as a decoding model")
         self.parser.add_argument('--custom_input', default=False, help="use 4 dimension statistic input from our data")
-        self.parser.add_argument('--TMIkeyboard', default=False, help="use TMIkeyboard")
+        self.parser.add_argument('--TMIkeyboard', default=True, help="use TMIkeyboard")
 
 
         # options for ShortTermDecoder
@@ -118,7 +118,7 @@ class TrainOptions(BaseOptions):
         self.parser.add_argument('--excessive_output', default=True, help="Excessive output for BERT (only uses first 31 dimension of 256 output")
         self.parser.add_argument('--intermediate_loss', default=True, help="")
         self.parser.add_argument('--intermediate_stop', default=30, type=int, help="")
-        self.parser.add_argument('--threshold', default=0.45, type=float, help="")
+        self.parser.add_argument('--cm_threshold', default=0.45, type=float, help="")
 
 
         # Save&load options
@@ -126,11 +126,11 @@ class TrainOptions(BaseOptions):
         self.parser.add_argument('--save_path', default='', help="define name when saving the model")
 
         self.parser.add_argument('--load_gru', default=True)
-        self.parser.add_argument('--gru_path', default='./checkpoints/BiRNN256_6_5.pth', help="define name when saving the model")
+        self.parser.add_argument('--geometric_decoder_path', default='BiRNN_h512_n12_.pth', help="location of pre-trained Geometric Decoder")
 
         self.parser.add_argument('--load_bert', default=True)
-        self.parser.add_argument('--bert_path', default='./MLM_512_12.pth',
-                                 help="define name when saving the model")
+        self.parser.add_argument('--semantic_decoder_path', default='BERT_h512_n12_MLM_epoch2.pth',
+                                 help="location of pre-trained Semantic Decoder (Transformer Encoder trained as Masked Character Language Model)")
 
 
 
