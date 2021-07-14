@@ -135,3 +135,4 @@ data/data*
 *.pth
 checkpoint/
 data/data_normalized/
+.idea
