@@ -25,5 +25,12 @@ The normalized dataset contains a x, y location coordinates divided by the used 
 If you find this project helpful, please consider citing this project in your publications. The following is the BibTeX of our work.
 
 ```bibtex
-
+@misc{yoo2021type,
+      title={Type Anywhere You Want: An Introduction to Invisible Mobile Keyboard}, 
+      author={Sahng-Min Yoo and Ue-Hwan Kim and Yewon Hwang and Jong-Hwan Kim},
+      year={2021},
+      eprint={2108.09030},
+      archivePrefix={arXiv},
+      primaryClass={cs.HC}
+}
 ```
