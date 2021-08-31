@@ -37,7 +37,7 @@ Training phrase 2: Pre-train Semantic Decoder as a Masked Character Language Mod
 python train.py --bert --masked_LM
 ```
 
-Training phrase 3: Fine-Tune the end-to-end network
+Training phrase 3: Fine-tune the end-to-end network
 ```
 python train.py --sa_ncd --geometric_decoder_path [path of pre-trained Geometric Decoder (phrase 1)] --semantic_decoder_path [path of pre-trained Semantic Decoder (phrase 2)]
 ```
