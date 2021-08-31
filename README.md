@@ -26,6 +26,7 @@ python train.py
 
 ### IMK Decoder Implementation (Test Video)
 The video is an example of typing "thank you for your help." on a web-implemented Invisible Mobile Keyboard using SA-NCD as a built-in decoder. Note that the decoded output can post-correct its typo by considering the additional input context.
+
 https://user-images.githubusercontent.com/49089477/131445988-ca1ae0c8-0ae8-4a14-b292-1ec6ffbdfc3a.mp4
 
 
