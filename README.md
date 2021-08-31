@@ -1,7 +1,3 @@
-
-
-https://user-images.githubusercontent.com/49089477/131445981-2123dbeb-c996-4936-a8f8-1de54971ab53.mp4
-
 ## Invisible Mobile Keyboard (IMK) with Self-Attention Neural Character Decoder (SA-NCD)
 Official data and Pytorch implementation of "Type Anywhere You Want: An Introduction to Invisible Mobile Keyboard" (IJCAI 2021, Accepted)
 
@@ -18,18 +14,18 @@ The normalized dataset contains a x, y location coordinates divided by the used 
 
 
 
-
-https://user-images.githubusercontent.com/49089477/131445988-ca1ae0c8-0ae8-4a14-b292-1ec6ffbdfc3a.mp4
-
-
-
 ### Data Construction
 ```
 
 
 
 
-## Citation
+### IMK Decoder Implementation (Test Video)
+https://user-images.githubusercontent.com/49089477/131445988-ca1ae0c8-0ae8-4a14-b292-1ec6ffbdfc3a.mp4
+
+
+
+### Citation
 If you find this project helpful, please consider citing this project in your publications. The following is the BibTeX of our work.
 
 ```bibtex
