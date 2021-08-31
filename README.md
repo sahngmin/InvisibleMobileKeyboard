@@ -20,11 +20,27 @@ The figure below is an example of IMK data. The dataset includes user index, age
 
 
 ### Training SA-NCD Network (IMK Decoder)
+Download and install [anaconda](https://docs.anaconda.com/anaconda/install/linux/) and create an virtual environment by below command.
 ```
 conda env create --file environment_imk.yaml
-python train.py 
 ```
 
+Please refer to our [paper](https://www.ijcai.org/proceedings/2021/0242.pdf) to understand the below training scheme of SA-NCD.
+
+Training phrase 1: Train Geometric Decoder (Bi-GRU)
+```
+python train.py --bi_gru 
+```
+
+Training phrase 2: Pre-train Semantic Decoder as a Masked Character Language Model (Bi-GRU)
+```
+python train.py --bert --masked_LM
+```
+
+Training phrase 3: Fine-Tune the end-to-end network
+```
+python train.py --sa_ncd --geometric_decoder_path [path of pre-trained Geometric Decoder (phrase 1)] --semantic_decoder_path [path of pre-trained Semantic Decoder (phrase 2)]
+```
 
 ### IMK Decoder Implementation (Test Video)
 The video is an example of typing "thank you for your help." on a web-implemented Invisible Mobile Keyboard using SA-NCD as a built-in decoder. Note that the decoded output can post-correct its typo by considering the additional input context.
