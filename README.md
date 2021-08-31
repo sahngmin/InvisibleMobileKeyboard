@@ -1,8 +1,7 @@
 ## Invisible Mobile Keyboard (IMK) with Self-Attention Neural Character Decoder (SA-NCD)
 Official data and Pytorch implementation of "Type Anywhere You Want: An Introduction to Invisible Mobile Keyboard" (IJCAI 2021, Accepted)
 
-This repository provides IMK dataset, codes for training the baseline decoder SA-NCD. Please refer to our [paper](https://www.ijcai.org/proceedings/2021/0242.pdf) 
-
+This repository provides IMK dataset, codes for training the baseline decoder SA-NCD. Please refer to our [paper](https://www.ijcai.org/proceedings/2021/0242.pdf).
 Thanks to [huggingface](https://github.com/huggingface/transformers) for a reference of transformers source code.
 
 
