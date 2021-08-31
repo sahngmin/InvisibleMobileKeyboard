@@ -18,6 +18,10 @@ The figure below is an example of IMK data. The dataset includes user index, age
 
 
 ### Training SA-NCD Network (IMK Decoder)
+```
+conda env create --file environment_imk.yaml
+python train.py 
+```
 
 
 ### IMK Decoder Implementation (Test Video)
