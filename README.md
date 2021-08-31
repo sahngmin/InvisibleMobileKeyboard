@@ -15,7 +15,8 @@ Place the extracted dataset in ```data/data_normalized``` to train the SA-NCD by
 
 ### Data Construction
 The figure below is an example of IMK data. The dataset includes user index, age, device type, typed text, coordinate values of the typed position as a list, size of the screen, and time taken for typing each phrase.
-<img width="702" alt="dataset_example" src="https://user-images.githubusercontent.com/49089477/131505405-14baba75-18b4-4240-a7a2-77b39e28fac3.png">
+<img width="1065" alt="dataset_example" src="https://user-images.githubusercontent.com/49089477/131512388-4878434c-f14b-4fa2-b46e-eae2347b4c86.png">
+
 
 
 ### Training SA-NCD Network (IMK Decoder)
