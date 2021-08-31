@@ -16,13 +16,14 @@ The normalized dataset contains a x, y location coordinates divided by the used 
 
 
 ### Data Construction
+<img width="702" alt="dataset_example" src="https://user-images.githubusercontent.com/49089477/131505405-14baba75-18b4-4240-a7a2-77b39e28fac3.png">
 ```
-
 
 ```
 
 
 ### IMK Decoder Implementation (Test Video)
+The video is an example of typing "thank you for your help." on a web-implemented Invisible Mobile Keyboard using SA-NCD as a built-in decoder. Note that the decoded output can post-correct its typo by considering the additional input context.
 https://user-images.githubusercontent.com/49089477/131445988-ca1ae0c8-0ae8-4a14-b292-1ec6ffbdfc3a.mp4
 
 
