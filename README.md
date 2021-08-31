@@ -10,16 +10,14 @@ The raw dataset is in ```data/raw```.
 The model is trained on normalized dataset which can be downloaded from the [Google Drive](https://drive.google.com/file/d/1eP2ZnxI1zzvtyyr_iQ_AAnRzyXgV59bI/view?usp=sharing).
 The normalized dataset contains a x, y location coordinates divided by the used device width and height, so they can be in range of [0, 1].
 
-### Training SA-NCD Network (IMK Decoder)
-
-
 
 
 ### Data Construction
+The figure below is an example of IMK data. The dataset includes user index, age, device type, typed text, coordinate values of the typed position as a list, size of the screen, and time taken for typing each phrase.
 <img width="702" alt="dataset_example" src="https://user-images.githubusercontent.com/49089477/131505405-14baba75-18b4-4240-a7a2-77b39e28fac3.png">
-```
 
-```
+
+### Training SA-NCD Network (IMK Decoder)
 
 
 ### IMK Decoder Implementation (Test Video)
