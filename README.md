@@ -20,12 +20,12 @@ The figure below is an example of IMK data. The dataset includes user index, age
 
 
 ### Training SA-NCD Network (IMK Decoder)
-Download and install [anaconda](https://docs.anaconda.com/anaconda/install/linux/) and create an virtual environment by below command.
+Download and install [anaconda](https://docs.anaconda.com/anaconda/install/linux/) & create an virtual environment by below command.
 ```
 conda env create --file environment_imk.yaml
 ```
 
-Please refer to our [paper](https://www.ijcai.org/proceedings/2021/0242.pdf) to understand the below training scheme of SA-NCD.
+Please refer to our [paper](https://www.ijcai.org/proceedings/2021/0242.pdf) to understand the belowing training scheme of SA-NCD.
 
 Training phrase 1: Train Geometric Decoder (Bi-GRU)
 ```
